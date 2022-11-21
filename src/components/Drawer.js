@@ -11,14 +11,27 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 
-const useStyles = makeStyles({
+import Paper from '@material-ui/core/Paper';
+
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    '& > *': {
+      margin: theme.spacing(1),
+      width: theme.spacing(16),
+      height: theme.spacing(16),
+    },
+  },
   list: {
     width: 250,
   },
   fullList: {
     width: 'auto',
   },
-});
+}));
 
 export default function TemporaryDrawer() {
   const classes = useStyles();
@@ -47,7 +60,7 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+        {['Juanor', 'Mortimer', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
@@ -68,7 +81,7 @@ export default function TemporaryDrawer() {
 
   return (
     <div>
-      {['left', 'right', 'top', 'bottom'].map((anchor) => (
+      {['huanca', 'martines'].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
           <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
@@ -76,6 +89,16 @@ export default function TemporaryDrawer() {
           </Drawer>
         </React.Fragment>
       ))}
+       <div className={classes.root}>
+      <Paper elevation={10} />
+      
+      
+      <Paper elevation={10} />
+      <Paper elevation={10} />
+      <Paper />
+      <Paper elevation={3} />
     </div>
+    </div>
+    
   );
 }
